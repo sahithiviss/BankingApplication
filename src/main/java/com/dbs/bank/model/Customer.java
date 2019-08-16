@@ -107,7 +107,7 @@ public class Customer implements Serializable{
 	}
 
 	public Customer(long customer_id, String username, String password, String firstname, String lastname, String email,
-			String phoneNum, String panId) {
+			String phoneNum, String panId,Set<Account> accounts ) {
 		this.customer_id = customer_id;
 		this.username = username;
 		this.password = password;
@@ -116,6 +116,7 @@ public class Customer implements Serializable{
 		this.email = email;
 		this.phoneNum = phoneNum;
 		this.panId = panId;
+		this.accounts=accounts;
 		
 	}
 

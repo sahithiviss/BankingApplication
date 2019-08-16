@@ -1,12 +1,14 @@
 package com.dbs.bank.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.dbs.bank.model.Account;
+import com.dbs.bank.model.Customer;
 import com.dbs.bank.repository.AccountRepository;
 
 @Service
@@ -19,6 +21,12 @@ public class AccountServiceImpl implements AccountService{
 	public AccountServiceImpl(AccountRepository accountRepository) {
 		super();
 		this.accountRepository = accountRepository;
+	}
+
+	@Override
+	public Optional<List<Account>> findByCustomer(Customer id) {
+		// TODO Auto-generated method stub
+		return this.accountRepository.findByCustomer(id);
 	}
 
 	@Override
@@ -43,7 +51,6 @@ public class AccountServiceImpl implements AccountService{
 	public Account updateAccount(long id, Account accountDetails) {
 		// TODO Auto-generated method stub
 		Account account = accountRepository.findById(id).get();
-		account.setAccountNum(accountDetails.getAccountNum());
 		account.setAccountType(accountDetails.getAccountType());
 		account.setBranch(accountDetails.getBranch());
 		account.setIfsc(accountDetails.getIfsc());

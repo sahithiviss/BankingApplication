@@ -1,6 +1,7 @@
 package com.dbs.bank.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -9,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.dbs.bank.model.Account;
+import com.dbs.bank.model.Customer;
 import com.dbs.bank.service.AccountService;
 
 @RestController
@@ -29,10 +31,20 @@ public class AccountController {
 		
 	}
 	
-	@GetMapping("/account/{id}")
+	@GetMapping("account/{id}")
 	public Account getAccountById(@PathVariable("id") Long id) {
 		return accountService.findById(id);
 	}
+	
+	@GetMapping("customer/account/{id}")
+	public Optional<List<Account>> getAccountByCustomerId(@PathVariable("id") Customer id) {
+		return accountService.findByCustomer(id);
+	}
+	
+//	@GetMapping("customer/{id}")
+//	public Account getAllAccountByCustomerId(@PathVariable("id") Long id) {
+//		return accountService.findById(id);
+//	}
 	
 	@PutMapping("/account/{id}")
 	public Account updateAccount(@PathVariable("id") Long id,

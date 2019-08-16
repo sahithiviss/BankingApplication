@@ -15,7 +15,6 @@ public class Account implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long account_id;
 	private long accountNum;
 	private String accountType;
 	
@@ -27,12 +26,6 @@ public class Account implements Serializable{
 	private String branch;
 	private String ifsc;
 	
-	public long getAccountNum() {
-		return accountNum;
-	}
-	public void setAccountNum(long accountNum) {
-		this.accountNum = accountNum;
-	}
 	public String getAccountType() {
 		return accountType;
 	}
@@ -68,8 +61,8 @@ public class Account implements Serializable{
     public Account() {
 		// TODO Auto-generated constructor stub
 	}
-	public Account(long account_id,long accountNum, String accountType, String branch, String ifsc) {
-		this.account_id=account_id;
+	public Account(long accountNum, String accountType, String branch, String ifsc) {
+	
 		this.accountNum = accountNum;
 		this.accountType = accountType;
 		this.branch = branch;
