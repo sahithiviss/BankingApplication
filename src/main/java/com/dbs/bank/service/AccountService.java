@@ -22,4 +22,5 @@ public interface AccountService {
 	
 	Optional<List<Account>> findByCustomer(Customer id);
 
+	Account findByAccountType(Account accountType);
 }

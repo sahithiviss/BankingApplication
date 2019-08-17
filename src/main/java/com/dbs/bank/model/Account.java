@@ -18,9 +18,9 @@ public class Account implements Serializable{
 	private long accountNum;
 	private String accountType;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
 	@JoinColumn(name="customer_id", nullable = false)
-	//@JsonBackReference
+	@OneToMany(mappedBy = "account", cascade = CascadeType.PERSIST)
 	private Customer customer;
 	
 	private String branch;

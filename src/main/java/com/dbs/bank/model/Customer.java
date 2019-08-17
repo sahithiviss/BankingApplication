@@ -7,6 +7,7 @@ import java.util.*;
 
 import javax.persistence.*;
 
+import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -16,10 +17,10 @@ import lombok.Data;
 
 
 @Entity
-@Table
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"panId"})})
 //@EntityListeners(AuditingEntityListener.class)
-@JsonIgnoreProperties(value = {"createdAt", "updatedAt"}, 
-        allowGetters = true)
+//@JsonIgnoreProperties(value = {"createdAt", "updatedAt"}, 
+//        allowGetters = true)
 public class Customer implements Serializable{
 	
 	@Id
@@ -32,6 +33,7 @@ public class Customer implements Serializable{
 	private String lastname;
 	private String email;
 	private String phoneNum;
+	@Column(unique = true)
 	private String panId;
 
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

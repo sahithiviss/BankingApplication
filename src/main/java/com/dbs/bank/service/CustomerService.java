@@ -17,5 +17,9 @@ public interface CustomerService {
 	Customer updateCustomer(long id, Customer customerDetails);
 
 	ResponseEntity<?> deleteCustomer(long id);
+	
+	Customer findByPanId(String panId);
+	public Customer findByEmail(String email);
+	public Customer findByPhoneNum(String phoneNum);
 
 }

@@ -32,7 +32,14 @@ public class CustomerServiceImpl implements CustomerService{
     @Override
     @Transactional
     public Customer saveCustomer(Customer customer) {
+    	//System.out.println("trgthb" + customerRepository.findByPanId(customer.getPanId()));
+    	if((customerRepository.findByPanId(customer.getPanId())==null)
+    			&& (customerRepository.findByEmail(customer.getEmail())==null)
+    					&& (customerRepository.findByPhoneNum(customer.getPhoneNum())==null))
+    	{
     	return customerRepository.save(customer);
+    	}
+    	return null;
     }
     
     @Override
@@ -65,4 +72,22 @@ public class CustomerServiceImpl implements CustomerService{
     	customerRepository.delete(customer);
     	return ResponseEntity.ok().build();
     }
+
+	@Override
+	public Customer findByPanId(String panId) {
+		// TODO Auto-generated method stub
+		return customerRepository.findByPanId(panId);
+	}
+
+	@Override
+	public Customer findByEmail(String email) {
+		// TODO Auto-generated method stub
+		return customerRepository.findByEmail(email);
+	}
+
+	@Override
+	public Customer findByPhoneNum(String phoneNum) {
+		// TODO Auto-generated method stub
+		return customerRepository.findByPhoneNum(phoneNum);
+	}
 }

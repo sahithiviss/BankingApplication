@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.dbs.bank.model.Account;
 import com.dbs.bank.model.Customer;
 import com.dbs.bank.repository.AccountRepository;
+import com.dbs.bank.repository.CustomerRepository;
 
 @Service
 public class AccountServiceImpl implements AccountService{
@@ -17,6 +18,8 @@ public class AccountServiceImpl implements AccountService{
 	@Autowired
 	private AccountRepository accountRepository;
 	
+//	@Autowired
+//	private CustomerRepository customerRepository'
     @Autowired
 	public AccountServiceImpl(AccountRepository accountRepository) {
 		super();
@@ -40,7 +43,12 @@ public class AccountServiceImpl implements AccountService{
 		// TODO Auto-generated method stub
 		return accountRepository.save(account);
 	}
-
+//	@Override
+//	public Account saveAccount(Customer customer,Account account) {
+//		// TODO Auto-generated method stub
+//		if(findByCustomer(customerRepository.findByPanId(cu))))
+//		return accountRepository.save(account);
+//	}
 	@Override
 	public Account findById(long id) {
 		// TODO Auto-generated method stub
@@ -63,6 +71,12 @@ public class AccountServiceImpl implements AccountService{
 		Account account = accountRepository.findById(id).get();
 		accountRepository.delete(account);
 		return ResponseEntity.ok().build();
+	}
+
+	@Override
+	public Account findByAccountType(Account accountType) {
+		// TODO Auto-generated method stub
+		return accountRepository.findByAccountType(accountType);
 	}
 
 }
